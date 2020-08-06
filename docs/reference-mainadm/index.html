@@ -148,7 +148,7 @@ that, when executed, will run the following steps:</p>
 <li>run the <code>man e</code> command</li>
 </ul></li>
 <li>it <em>linearizes</em> the main repository and it executes the test on the <em>last</em>
-exercise (at the HEAD of the <strong>git</strong> repo)</li>
+exercise (at the HEAD of the <strong><em>git</em></strong> repo)</li>
 <li>it <em>studentifies</em> the main repository and in this repo it runs through
 <em>all</em> the exercises in a random manner and for each of these exercise it:
 <ul>
@@ -166,10 +166,11 @@ PR merge. For inspiration, you may want to have a look at
 via Github Actions in the Lunatech Labs <a href="https://github.com/lunatech-labs/lunatech-scala-2-to-scala3-course">Moving from Scala 2 to Scala 3 Github
 course</a>.</p>
 <blockquote>
-<p>NOTE: when <code>cmt-mainadm</code> is used to generate a test script, the <code>-g</code> option can be added.
-If done so, this option will be added when the studentified version of the main repo is
-generated during the tests. The reason why one might want to do this is to verify that
-<code>cmt-studentify</code> can generate an artifact initialized as a <strong>git</strong> repository.</p>
+<p><strong>NOTE</strong><br>
+When the <code>-g</code> option is added when invoking <code>cmt-mainadm -t</code>, the generated
+test script will pass <code>-g</code> on invocations of <code>cmt-studentify</code> in the script.
+The reason why one might want to do this is to test studentified
+artifacts initialized as a <strong><em>git</em></strong> repository.</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="checking-the-soundness-of-a-cmt-main-repository"></a><a href="#checking-the-soundness-of-a-cmt-main-repository" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Checking the soundness of a CMT main repository</h2>
 <p>A CMT main repository has to be built according to a number of conventions.
@@ -239,8 +240,9 @@ configuration file to round up this section. You may have to do this
 in your CMT project is you put the <code>course-management.conf</code> file in a
 non-default location.</p>
 <p>For the example, we use the CMT Github repository itself and we will
-run <code>cmt-mainadm -c</code> on the templates. Here are a few sample runs:</p>
-<pre><code class="hljs">$ cmt-mainadm -c -cfg course-templates/scala-cmt-template-common/course-management.conf /Users/ericloots/Trainingen/LBT/course-management-tools
+run <code>cmt-mainadm -c</code> on the templates. Here is a sample run:</p>
+<pre><code class="hljs">$ cmt-mainadm -c -cfg course-templates/scala-cmt-template-common/course-management.conf \
+          /Users/ericloots/Trainingen/LBT/course-management-tools
 git version 2.28.0
 On branch documentation
 Your branch is ahead of 'origin/documentation' by 1 commit.
@@ -255,19 +257,5 @@ Cloning <span class="hljs-keyword">into</span> <span class="hljs-string">'course
 done.
 <span class="hljs-keyword">No</span> issues <span class="hljs-keyword">found</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">main</span> <span class="hljs-keyword">project</span>
 
-$ cmt-mainadm -c -cfg course-templates/dotty-cmt-<span class="hljs-keyword">template</span>-common/course-management.conf /<span class="hljs-keyword">Users</span>/ericloots/Trainingen/LBT/course-<span class="hljs-keyword">management</span>-tools
-git <span class="hljs-keyword">version</span> <span class="hljs-number">2.28</span><span class="hljs-number">.0</span>
-<span class="hljs-keyword">On</span> branch documentation
-Your branch <span class="hljs-keyword">is</span> ahead <span class="hljs-keyword">of</span> <span class="hljs-string">'origin/documentation'</span> <span class="hljs-keyword">by</span> <span class="hljs-number">1</span> commit.
-  (<span class="hljs-keyword">use</span> <span class="hljs-string">"git push"</span> <span class="hljs-keyword">to</span> publish your <span class="hljs-keyword">local</span> commits)
-
-<span class="hljs-keyword">nothing</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">commit</span>, working tree clean
-CHECKING WORKSPACE <span class="hljs-keyword">in</span> /<span class="hljs-keyword">Users</span>/ericloots/Trainingen/LBT/course-<span class="hljs-keyword">management</span>-tools
-<span class="hljs-keyword">Initialized</span> <span class="hljs-keyword">empty</span> Git repository <span class="hljs-keyword">in</span> /<span class="hljs-keyword">private</span>/<span class="hljs-keyword">var</span>/folders/rq/vhwkgm9x2rs33jl4t2x6t6jr0000gn/T/sbt_a6f71ad9/course-<span class="hljs-keyword">management</span>-tools.git/
-<span class="hljs-keyword">To</span> /<span class="hljs-keyword">var</span>/folders/rq/vhwkgm9x2rs33jl4t2x6t6jr0000gn/T/sbt_a6f71ad9/course-<span class="hljs-keyword">management</span>-tools.git
- * [<span class="hljs-keyword">new</span> branch]        <span class="hljs-keyword">HEAD</span> -&gt; <span class="hljs-number">420</span>D7B5A<span class="hljs-number">-7747</span><span class="hljs-number">-49</span>AA<span class="hljs-number">-814</span>A-EFACED193B9C
-Cloning <span class="hljs-keyword">into</span> <span class="hljs-string">'course-management-tools'</span>...
-done.
-<span class="hljs-keyword">No</span> issues <span class="hljs-keyword">found</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">main</span> <span class="hljs-keyword">project</span>
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/course-management-tools/docs/reference-intro"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/course-management-tools/docs/reference-cmtstudentify"><span>cmt-studentify</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#command-invocation">Command Invocation</a></li><li><a href="#main-administration-tasks">Main administration tasks</a><ul class="toc-headings"><li><a href="#-dot-dotty-compatible-build-definition"><code>-dot</code>: Dotty compatible build definition</a></li><li><a href="#-nar-do-not-automatically-reload-the-build-on-build-changes"><code>-nar</code>: Do not automatically reload the build on build changes</a></li></ul></li><li><a href="#deleting-an-exercise">Deleting an exercise</a></li><li><a href="#duplicate-a-given-exercise-and-insert-it-before-that-exercise">Duplicate a given exercise and insert it before that exercise</a></li><li><a href="#renumber-exercises-with-a-given-offset-and-step-size">Renumber exercises with a given offset and step size</a></li><li><a href="#generation-of-a-repository-test-script">Generation of a repository test script</a></li><li><a href="#checking-the-soundness-of-a-cmt-main-repository">Checking the soundness of a CMT main repository</a></li><li><a href="#rebuild-the-root-buildsbt-of-a-cmt-main-repository">Rebuild the root <code>build.sbt</code> of a CMT main repository</a></li><li><a href="#wrapping-up">Wrapping up</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/course-management-tools/" class="nav-home"><img src="/course-management-tools/img/favicon.ico" alt="Course Management Tools" width="66" height="58"/></a><div><h5>Docs</h5><a href="/course-management-tools/docs/en/getting_started">Getting Started</a><a href="/course-management-tools/docs/en/reference-intro">Reference</a></div><div><h5>Community</h5><a href="https://github.com/eloots/course-management-tools/issues" target="_blank">Open an issue or ask questions</a></div><div><h5>More</h5><a href="/course-management-tools/blog">Blog</a><a href="https://github.com/eloots/course-management-tools" target="_blank">GitHub</a><a class="github-button" href="https://github.com/eloots/course-management-tools" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><img style="float:left;margin:5px" src="/course-management-tools/img/jetbrains.svg" alt="Course Management Tools" width="66" height="58"/><div><a href="https://www.jetbrains.com/?from=course-management-tools" target="_blank">JetBrains supports this project by providing core project contributors with a set of best-in-class developer tools free of charge.</a></div></div></section><section class="copyright">Copyright © 2020 Course Management Tools</section></footer></div></body></html>

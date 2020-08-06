@@ -56,12 +56,12 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Getting Started</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="a-brief-history-of-cmt-course-management-tools"></a><a href="#a-brief-history-of-cmt-course-management-tools" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A brief history of CMT (Course Management Tools)</h2>
 <p>When I joined Lightbend in 2016, I started working on the Lightbend Training Courses. At that
-time the code for the exercises in each course were maintained in a <strong>git</strong> repository so that
+time the code for the exercises in each course were maintained in a <strong><em>git</em></strong> repository so that
 courses could be versioned. The problem however was that each exercise in a course was mapped
-to a commit in git. So, in a course with say, 15 exercises, the <strong>git</strong> repository would
+to a commit in git. So, in a course with say, 15 exercises, the <strong><em>git</em></strong> repository would
 have 15 commits. That was very nice in principle, but it made it very difficult from a
 maintenance point of view: as soon as one updated an exercise, the only way to do this was
-to use <strong>git</strong> interactive rebasing. Doing so rewrites the history of the exercise repository
+to use <strong><em>git</em></strong> interactive rebasing. Doing so rewrites the history of the exercise repository
 which is pretty bad because:</p>
 <ul>
 <li>if one wants to keep track of previous versions of a course, the best one can do is to save
@@ -73,7 +73,7 @@ editing approach renders the PR useless</li>
 coming up with a more flexible approach. I picked up the thread and implemented a system that
 became the Course Management Tools. The main goals I set out to achieve were:</p>
 <ul>
-<li>put all course exercises in a <strong>git</strong> repository, the so-called <em>Main Repository</em> (<em>MR</em>), that
+<li>put all course exercises in a <strong><em>git</em></strong> repository, the so-called <em>Main Repository</em> (<em>MR</em>), that
 allows versioning of the exercises <em>without being forced</em> to use interactive rebasing
 when editing exercises</li>
 <li>create a tool to derive an artifact from the <em>MR</em> that is optimised for student usage:
@@ -88,7 +88,7 @@ when editing exercises</li>
 <li>restore a previously saved state of an exercise</li>
 </ul></li>
 </ul></li>
-<li>create a tool that allows a course creator or maintainer to change exercises using <strong>git</strong>
+<li>create a tool that allows a course creator or maintainer to change exercises using <strong><em>git</em></strong>
 interactive rebasing when this makes sense</li>
 </ul>
 <p>Over time, practical experience showed that there are other very useful use cases for the tooling.
@@ -99,7 +99,7 @@ That's what is described in the following section</p>
 <li><em>Build and maintain a series of exercises for a training course</em>:
 <ul>
 <li>where each exercise builds on the previous one</li>
-<li>the exercise history is tracked using <strong>git</strong></li>
+<li>the exercise history is tracked using <strong><em>git</em></strong></li>
 <li>the exercises can be converted in a artifact that gives students the
 possibility to navigate the exercises, save the current state of
 their work for each exercise, and, if needed, <em>pull</em> the solution
@@ -110,7 +110,7 @@ for an exercise</li>
 <li>decompose it in bite-sized steps that can be grasped by users who
 are not yet comfortable with the used software libraries and/or
 frameworks</li>
-<li>the application history is tracked using <strong>git</strong></li>
+<li>the application history is tracked using <strong><em>git</em></strong></li>
 <li>the application can be converted in an artifact that can be used
 to run the application at any of the intermediate steps in an
 easy manner</li>
@@ -120,7 +120,7 @@ to inspect the code changes between consecutive steps</li>
 <li><em>Build and maintain code that will be used during a live-coding session</em>:
 <ul>
 <li>maintain a series of &quot;checkpoints&quot;</li>
-<li>track the checkpoint history in <strong>git</strong></li>
+<li>track the checkpoint history in <strong><em>git</em></strong></li>
 <li>provide for a safetynet by allowing to revert to a checkpoint</li>
 <li>save any changes made during the session for later retrieval</li>
 </ul></li>
@@ -158,13 +158,13 @@ for it</li>
 <li><p><strong>cmt-linearize</strong> &amp; <strong>cmt-delinearize</strong></p></li>
 </ul>
 <p><strong>cmt-linearize</strong> is used to generate an artifact, named the <em>linearized repo</em>
-that is used to edit the code in exercises using <strong>git</strong> interactive rebasing.
+that is used to edit the code in exercises using <strong><em>git</em></strong> interactive rebasing.
 Once the edit process is finished, <strong>cmt-delinearize</strong> is used to reflect the
 changes in the <em>linearized repo</em> in the main exercise repository.</p>
 <p>In general, the <em>linearized repo</em> can be considered to be a scratch pad that is
 discarded after the editing process is finished. However, it can used to inspect
 the differences between consecutive exercises (this is because the linearized repo
-is a <strong>git</strong> repository where each exercise is a commit).</p>
+is a <strong><em>git</em></strong> repository where each exercise is a commit).</p>
 <p>The following picture shows the different respositories and flows in the management of a course.</p>
 <p><img src="https://i.imgur.com/5FzwpLa.png" alt="CMT overview"></p>
 <p>It is the <em>Main Repository</em> that contains the history of a course (or demo/POC) repository.
